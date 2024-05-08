@@ -1,13 +1,6 @@
-## PROYECTO DE IHC / FISI-Taste
-- Curso: Interaccion Hombre Computador
-- Docente: 
-- Grupo: 2
-- Ciclo: 2022 - 0
+## PROYECTO DE UX
+- Curso: Experiencia de Usuario y Usabilidad
+- Grupo: 9
+- Ciclo: 2024-1
 
-## Integrantes
-| Apellidos | Nombres |
-| --------- | ------- |
-| Arango Quispe | Esmeralda |
-| Calderon Herrera | Miguel Angel |
-| Porras Quispe | Marco Aurelio |
-| Ytusaca Quispe | Saúl Fernando |
+
