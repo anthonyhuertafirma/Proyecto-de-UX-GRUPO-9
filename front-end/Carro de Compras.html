@@ -4,20 +4,32 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Formulario de Tarjeta de Crédito Dinámico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Carro de Compras</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+	<header>
+
+        <a href="index.html" class="logo"><i class="fas fa-utensils"></i>SM TASTE</a>
+    
+        <nav class="navbar">
+            <a class="active" href="#pago">Carro de Compras</a>
+        </nav>
+
+    
+    </header>
+
 	<div class="contenedor">
 
 		<!-- Tarjeta -->
 		<section class="tarjeta" id="tarjeta">
 			<div class="delantera">
 				<div class="logo-marca" id="logo-marca">
-					<!-- <img src="img/logos/visa.png" alt=""> -->
+					<!-- <img src="images/logos/visa.png" alt=""> -->
 				</div>
-				<img src="img/chip-tarjeta.png" class="chip" alt="">
+				<img src="images/chip-tarjeta.png" class="chip" alt="">
 				<div class="datos">
 					<div class="grupo" id="numero">
 						<p class="label">Número Tarjeta</p>
@@ -30,7 +42,7 @@
 						</div>
 
 						<div class="grupo" id="expiracion">
-							<p class="label">Expiracion</p>
+							<p class="label">Expiración</p>
 							<p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
 						</div>
 					</div>
@@ -45,12 +57,12 @@
 						<div class="firma"><p></p></div>
 					</div>
 					<div class="grupo" id="ccv">
-						<p class="label">CCV</p>
+						<p class="label">CVV</p>
 						<p class="ccv"></p>
 					</div>
 				</div>
-				<p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem, voluptates illo.</p>
-				<a href="#" class="link-banco">www.tubanco.com</a>
+				<p class="leyenda">Consulte con su banco antes de realizar algún pago via internet; evite las estafas y/o fraudes bancarios.</p>
+				<a href="https://www.visa.com.pe/" class="link-banco">www.visa.com.pe/</a>
 			</div>
 		</section>
 
@@ -73,7 +85,7 @@
 			</div>
 			<div class="flexbox">
 				<div class="grupo expira">
-					<label for="selectMes">Expiracion</label>
+					<label for="selectMes">Expiración</label>
 					<div class="flexbox">
 						<div class="grupo-select">
 							<select name="mes" id="selectMes">
@@ -95,11 +107,14 @@
 					<input type="text" id="inputCCV" maxlength="3">
 				</div>
 			</div>
-			<button type="submit" class="btn-enviar">Enviar</button>
+            <p> Presione "Enviar", para culminar con su pedido.</p>
+            <button onclick="myFunction()"class="btn-enviar">Enviar</button>
+                 
 		</form>
 	</div>
 
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
+    
 </body>
 </html>
