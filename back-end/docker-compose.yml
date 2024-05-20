@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  restaurant:
+    build: restaurant
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_URL=jdbc:mysql://app_restaurante:3306/restaurante_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+      - DB_USER=root
+      - DB_PASSWORD=guerra2350
+    restart: always
+    depends_on:
+      - app_restaurante
+
+  app_restaurante:
+    image: mysql:8.0.33
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_PASSWORD=1234
+      - MYSQL_DATABASE=restaurante_db
+    restart: always
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
