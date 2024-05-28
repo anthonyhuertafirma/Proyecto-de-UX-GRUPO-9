@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM TASTE</title>
+    <link rel="shortcut icon" href="images/Restaurant On Site.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-panel.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo"><img src="images/Restaurant On Site 05.png">SM TASTE</a>
+    
+        <nav class="navbar">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#about">Nosotros</a>
+            <a href="index.html#menu">Menú</a>
+        </nav>
+    
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <i class="fas fa-search" id="search-icon"></i>
+            <a href="Carro de Compras.html" class="fas fa-shopping-cart"></a>
+            <a href="login.html" class="fas fa-user"></a>
+        </div>
+    </header>
+    <form action="" id="search-form">
+        <input type="search" placeholder="Buscar en SM TASTE" name="" id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+        <i class="fas fa-times" id="close"></i>
+    </form>
+    <div class="admin-container">
+        <h2>Menú del día</h2>
+        <div class="form-container">
+            <div class="form-box">
+                <h3>Modificar Plato</h3>
+                <select>
+                    <option>Plato_1</option>
+                    <option>Plato_2</option>
+                    <option>Plato_3</option>
+                </select>
+                <img src="images/dish-1.png" alt="Plato 1">
+                <h1>Plato 1</h1>
+                <input type="number" placeholder="Precio: S/.00">
+                <input type="number" placeholder="Cantidad: 00">
+                <textarea placeholder="Descripción: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum odio at augue tempor..."></textarea>
+                <button>Actualizar</button>
+                <button style="background-color: #dc3545;">Eliminar</button>
+            </div>
+            <div class="form-box">
+                <h3>Añadir Plato Nuevo</h3>
+                <img src="images/dish-2.png" alt="Plato Nuevo">
+                <h1>Plato x</h1>
+                <input type="number" placeholder="Precio: S/.00">
+                <input type="number" placeholder="Cantidad: 00">
+                <textarea placeholder="Agrega una Descripción:"></textarea>
+                <button>Añadir</button>
+                <button style="background-color: #dc3545;">Limpiar</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

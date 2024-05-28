@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 40px;
+}
+
+.navbar a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons i {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.detalle-compras-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "entrega pago"
+        "resumen resumen";
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 60px auto;  /* Ajuste del margen superior para bajar el contenedor */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.detalle-entrega {
+    grid-area: entrega;
+}
+
+.detalle-pago {
+    grid-area: pago;
+}
+
+.detalle-resumen {
+    grid-area: resumen;
+}
+
+#map {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.detalle-pago form {
+    display: flex;
+    flex-direction: column;
+}
+
+.detalle-pago label {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.detalle-resumen p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.detalle-resumen button {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.detalle-resumen button:hover {
+    background-color: #218838;
+}
