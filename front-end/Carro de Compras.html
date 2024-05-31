@@ -10,9 +10,10 @@
 	<link rel="stylesheet" href="css/style-carro.css">
 </head>
 <body>
+    <!--- Empieza el header --->
     <header>
-        <a href="index.html" class="logo"><img src="images/Restaurant On Site 05.png">SM TASTE</a>
-    
+        <a href="index.html" class="logo"><img src="images/Restaurant On Site 05.png" alt="SM TASTE">SM TASTE</a>
+
         <nav class="navbar">
             <a href="index.html">Inicio</a>
             <a href="index.html#about">Nosotros</a>
@@ -26,6 +27,9 @@
             <a href="login.html" class="fas fa-user"></a>
         </div>
     </header>
+    <!--- Termina el header --->
+
+
     <form action="" id="search-form">
         <input type="search" placeholder="Buscar en SM TASTE" name="" id="search-box">
         <label for="search-box" class="fas fa-search"></label>
@@ -37,31 +41,7 @@
             <a href="index.html">Volver</a>
         </div>
         <div class="cart-content">
-            <div class="cart-items">
-                <div class="cart-item">
-                    <img src="images/dish-1.png" alt="Plato 1">
-                    <div class="item-info">
-                        <h3>Plato 1</h3>
-                        <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.</p>
-                        <span>Tienda: Cafetería De La Facultad De Letras</span>
-                    </div>
-                    <div class="item-controls">
-                        <input type="number" value="1" min="1">
-                        <button class="fas fa-trash-alt"></button>
-                    </div>
-                </div>
-                <div class="cart-item">
-                    <img src="images/dish-2.png" alt="Plato 2">
-                    <div class="item-info">
-                        <h3>Plato 2</h3>
-                        <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.</p>
-                        <span>Tienda: Cafetería De La Clínica Universitaria</span>
-                    </div>
-                    <div class="item-controls">
-                        <input type="number" value="1" min="1">
-                        <button class="fas fa-trash-alt"></button>
-                    </div>
-                </div>
+            <div class="cart-items" id="cart-items">
             </div>
             <div class="cart-summary">
                 <h3>Resumen</h3>
@@ -84,5 +64,6 @@
         </div>
     </div>
     <script src="js/script.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 </html>
