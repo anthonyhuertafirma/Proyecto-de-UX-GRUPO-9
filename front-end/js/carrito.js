@@ -64,6 +64,6 @@ function createCartItem(itemData) {
 }
 
 // Añadir cada ítem del carrito al contenedor principal
-cartItems.forEach(function(item) {
+cartItems.forEach(item => {
   carritoContainer.appendChild(createCartItem(item));
 });

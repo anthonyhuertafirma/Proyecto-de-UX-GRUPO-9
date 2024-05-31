@@ -1,50 +1,50 @@
-// Crear el contenedor principal del swiper
-const swiperContainer = document.createElement('div');
-swiperContainer.className = 'swiper-container home-slider';
-
-// Crear el contenedor del wrapper
-const swiperWrapper = document.createElement('div');
-swiperWrapper.className = 'swiper-wrapper wrapper';
-
-const slides = [
+// Datos de los slides
+const slidesData = [
   {
-    span: 'la casa recomienda',
-    h3: 'tallarines a lo Alfredo',
+    span: 'La casa recomienda',
+    h3: 'Tallarines a lo Alfredo',
     p: 'Deliciosos tallarines al dente, bañados en salsa fresca de tomate, acompañado de verduras cocidas y queso mozarella.',
-    imgSrc: 'images/home-img-1.png'
+    imgSrc: 'images/home-img-1.png',
+    imgAlt: 'Tallarines a lo Alfredo'
   },
   {
     span: 'Nuestro plato especial',
     h3: 'Pollo al horno',
     p: 'Elaborado con una sazón a base de finas hierbas y acompañado de vegetales deliciosos. Pide ahora tu plato especial.',
-    imgSrc: 'images/home-img-2.png'
+    imgSrc: 'images/home-img-2.png',
+    imgAlt: 'Pollo al horno'
   },
   {
-    span: 'lo más pedido',
-    h3: 'pizza vegetariana',
+    span: 'Lo más pedido',
+    h3: 'Pizza vegetariana',
     p: 'Una opción para vegetarianos, aquellos que pueden tener una dieta con necesidades especiales, o simplemente para aquellos que buscan una alternativa más saludable a la pizza normal.',
-    imgSrc: 'images/home-img-3.png'
+    imgSrc: 'images/home-img-3.png',
+    imgAlt: 'Pizza vegetariana'
   }
 ];
 
-// Función para crear una diapositiva
-function createSlide(slideData) {
-  var swiperSlide = document.createElement('div');
-  swiperSlide.className = 'swiper-slide slide';
+// Contenedor del slider
+const swiperWrapper = document.getElementById('swiper-wrapper wrapper');
 
-  var content = document.createElement('div');
+// Función para crear un slide
+function createSlide(item) {
+  // Crear contenedor del slide
+  let slide = document.createElement('div');
+  slide.className = 'swiper-slide slide';
+
+  let content = document.createElement('div');
   content.className = 'content';
 
-  var span = document.createElement('span');
-  span.textContent = slideData.span;
+  let span = document.createElement('span');
+  span.textContent = item.span;
 
-  var h3 = document.createElement('h3');
-  h3.textContent = slideData.h3;
+  let h3 = document.createElement('h3');
+  h3.textContent = item.h3;
 
-  var p = document.createElement('p');
-  p.textContent = slideData.p;
+  let p = document.createElement('p');
+  p.textContent = item.p;
 
-  var a = document.createElement('a');
+  let a = document.createElement('a');
   a.href = '#';
   a.className = 'btn';
   a.textContent = 'Pedir ahora';
@@ -54,48 +54,23 @@ function createSlide(slideData) {
   content.appendChild(p);
   content.appendChild(a);
 
-  var image = document.createElement('div');
+  const image = document.createElement('div');
   image.className = 'image';
 
-  var img = document.createElement('img');
-  img.src = slideData.imgSrc;
-  img.alt = '';
+  const img = document.createElement('img');
+  img.src = item.imgSrc;
+  img.alt = item.imgAlt;
 
   image.appendChild(img);
 
-  swiperSlide.appendChild(content);
-  swiperSlide.appendChild(image);
+  // Añadir contenido e imagen al slide
+  slide.appendChild(content);
+  slide.appendChild(image);
 
-  return swiperSlide;
+  return slide;
 }
 
-// Añadir cada diapositiva al wrapper
-slides.forEach(function(slide) {
-  swiperWrapper.appendChild(createSlide(slide));
+slidesData.forEach(slideItem => {
+  swiperWrapper.appendChild(createSlide(slideItem));
 });
 
-// Añadir el wrapper al contenedor principal
-swiperContainer.appendChild(swiperWrapper);
-
-// Crear y añadir la paginación
-var swiperPagination = document.createElement('div');
-swiperPagination.className = 'swiper-pagination';
-swiperContainer.appendChild(swiperPagination);
-
-// Añadir el contenedor principal al cuerpo del documento o a cualquier otro contenedor
-document.body.appendChild(swiperContainer);
-
-// Inicializar Swiper
-var swiper = new Swiper('.home-slider', {
-  spaceBetween: 30,
-  centeredSlides: true,
-  autoplay: {
-    delay: 7500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  loop: true,
-});
