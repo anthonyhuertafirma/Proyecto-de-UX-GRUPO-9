@@ -59,7 +59,7 @@ const menuItems = [
 
 const boxContainer = document.getElementById('box-container');
 
-menuItems.forEach(item => {
+function createBoxItem(menuItem) {
   const box = document.createElement('div');
   box.className = 'box';
 
@@ -67,23 +67,23 @@ menuItems.forEach(item => {
   imageDiv.className = 'image';
 
   const img = document.createElement('img');
-  img.src = item.image;
-  img.alt = item.title;
+  img.src = menuItem.image;
+  img.alt = menuItem.title;
   imageDiv.appendChild(img);
 
   const contentDiv = document.createElement('div');
   contentDiv.className = 'content';
 
   const h3 = document.createElement('h3');
-  h3.textContent = item.title;
+  h3.textContent = menuItem.title;
   contentDiv.appendChild(h3);
 
   const pDescripcion = document.createElement('p');
-  pDescripcion.innerHTML = `<b>Descripción: </b>${item.description}`;
+  pDescripcion.innerHTML = `<b>Descripción: </b>${menuItem.description}`;
   contentDiv.appendChild(pDescripcion);
 
   const pCantidad = document.createElement('p');
-  pCantidad.innerHTML = `<b>Cantidad: </b>${item.quantity}`;
+  pCantidad.innerHTML = `<b>Cantidad: </b>${menuItem.quantity}`;
   contentDiv.appendChild(pCantidad);
 
   const a = document.createElement('a');
@@ -98,11 +98,15 @@ menuItems.forEach(item => {
 
   const span = document.createElement('span');
   span.className = 'price';
-  span.textContent = item.price;
+  span.textContent = menuItem.price;
 
   contentDiv.appendChild(span);
   box.appendChild(imageDiv);
   box.appendChild(contentDiv);
 
-  boxContainer.appendChild(box);
+  return box
+}
+
+menuItems.forEach(function (item) {
+  boxContainer.appendChild(createBoxItem(item));
 });
