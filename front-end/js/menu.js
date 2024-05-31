@@ -107,6 +107,6 @@ function createBoxItem(menuItem) {
   return box
 }
 
-menuItems.forEach(function (item) {
+menuItems.forEach(item => {
   boxContainer.appendChild(createBoxItem(item));
 });
