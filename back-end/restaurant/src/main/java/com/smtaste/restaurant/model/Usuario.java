@@ -22,8 +22,8 @@ public class Usuario {
     private String apellido;
     @Enumerated(EnumType.ORDINAL)
     private Rol rol;
-    private String correo;
-    private String contrasenia;
+    private String email;
+    private String contrasena;
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
     @OneToMany(mappedBy = "usuario")
