@@ -40,7 +40,7 @@ document.querySelector('#close').onclick = () =>{
   document.querySelector('#search-form').classList.remove('active');
 }
 
-var swiper = new Swiper(".home-slider", {
+let swiper = new Swiper(".home-slider", {
   spaceBetween: 30,
   centeredSlides: true,
   autoplay: {
@@ -54,7 +54,7 @@ var swiper = new Swiper(".home-slider", {
   loop:true,
 });
 
-var swiper = new Swiper(".review-slider", {
+let swiper = new Swiper(".review-slider", {
   spaceBetween: 20,
   centeredSlides: true,
   autoplay: {

@@ -1,5 +1,6 @@
 const menuItems = [
   {
+    id: 1,
     image: 'images/menu-1.jpg',
     title: 'Pizza "All the meats"',
     description: 'Pizza familiar con todas las carnes. Queso mozzarella, carne de res, pepperoni, salchicha de cerdo, tocino y jamón.',
@@ -7,6 +8,7 @@ const menuItems = [
     price: 'S/12.99'
   },
   {
+    id: 2,
     image: 'images/menu-2.jpg',
     title: 'Hamburguesa de carne',
     description: 'Deliciosa hamburguesa con carne de res, pepinillos frescos, tomate, cebollas crocante, palta y deliciosas cremas.',
@@ -14,6 +16,7 @@ const menuItems = [
     price: 'S/12.99'
   },
   {
+    id: 3,
     image: 'images/menu-3.jpg',
     title: 'Tortilla dulce',
     description: 'Tortilla dulce con jalea de frutas silvestres, un postre ideal para deleitarte en los momentos de ocio junto a tus colegas.',
@@ -21,6 +24,7 @@ const menuItems = [
     price: 'S/12.99'
   },
   {
+    id: 4,
     image: 'images/menu-4.jpg',
     title: 'Waffle con helado',
     description: 'Con una suave masa esponjosa que se puede consumir acompañado de crema de helado para degustar en cualquier momento.',
@@ -28,6 +32,7 @@ const menuItems = [
     price: 'S/12.99'
   },
   {
+    id: 5,
     image: 'images/menu-5.jpg',
     title: 'Tarta de vallas dulces',
     description: 'Deliciosa para comer junto con frutas, panes, queso dulce, bañado en manjar blanco chocolate.',
@@ -35,6 +40,7 @@ const menuItems = [
     price: 'S/12.99'
   },
   {
+    id: 6,
     image: 'images/menu-6.jpg',
     title: 'Cupcake aperlado',
     description: 'Relleno de trozos de chocolate y fruta con una suave crema chantilly sabor a arándanos.',
@@ -42,6 +48,7 @@ const menuItems = [
     price: 'S/12.99'
   },
   {
+    id: 7,
     image: 'images/menu-7.jpg',
     title: 'Bebidas frutales',
     description: 'Una bebida helada a base, principalmente, de jugos frutales mezclados con agua o leche.',
@@ -49,6 +56,7 @@ const menuItems = [
     price: 'S/12.99'
   },
   {
+    id: 8,
     image: 'images/menu-8.jpg',
     title: 'Ensalada de frutas',
     description: 'Postre frío elaborado con frutas frescas aromatizadas con jarabe perfumado y chocolate.',
@@ -58,10 +66,12 @@ const menuItems = [
 ];
 
 const boxContainer = document.getElementById('box-container');
+let arr = []
 
 function createBoxItem(menuItem) {
   const box = document.createElement('div');
   box.className = 'box';
+  box.id = menuItem.id;
 
   const imageDiv = document.createElement('div');
   imageDiv.className = 'image';
@@ -86,15 +96,16 @@ function createBoxItem(menuItem) {
   pCantidad.innerHTML = `<b>Cantidad: </b>${menuItem.quantity}`;
   contentDiv.appendChild(pCantidad);
 
-  const a = document.createElement('a');
-  a.href = '#';
-  a.className = 'btn';
+  const botonCarrito = document.createElement('button');
+  botonCarrito.href = '#';
+  botonCarrito.className = 'btn';
+  botonCarrito.addEventListener('click', () => {guardarItemCarrito(box.id, arr)})
 
   const i = document.createElement('i');
   i.className = 'fa-solid fa-cart-shopping';
 
-  a.appendChild(i);
-  contentDiv.appendChild(a);
+  botonCarrito.appendChild(i);
+  contentDiv.appendChild(botonCarrito);
 
   const span = document.createElement('span');
   span.className = 'price';
