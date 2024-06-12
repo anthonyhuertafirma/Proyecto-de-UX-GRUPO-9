@@ -1,17 +1,9 @@
-const cartItems = [
-  {
-    urlImagen: 'images/dish-1.png',
-    nombre: 'Plato 1',
-    descripcion: "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.",
-    nombreRestaurante: 'Tienda: Cafetería De La Facultad De Letras'
-  },
-  {
-    urlImagen: 'images/dish-2.png',
-    nombre: 'Plato 2',
-    descripcion: 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.',
-    nombreRestaurante: 'Tienda: Cafetería De La Clínica Universitaria'
-  }
-];
+const cartItems = {
+  urlImagen: 'images/dish-1.png',
+  nombre: 'Plato 1',
+  descripcion: "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.",
+  nombreRestaurante: 'Tienda: Cafetería De La Facultad De Letras'
+}
 
 let carritoContainer = document.getElementById('cart-items');
 
@@ -35,11 +27,11 @@ async function recuperarItems() {
 
 recuperarItems().then(r => console.log(r));
 
-
 // Función para crear un ítem del carrito
 function createCartItem(itemData) {
   let cartItem = document.createElement('div');
   cartItem.className = 'cart-item';
+  cartItem.id = itemData.id;
 
   let img = document.createElement('img');
   img.src = itemData.urlImagen;
@@ -81,4 +73,3 @@ function createCartItem(itemData) {
 
   return cartItem;
 }
-

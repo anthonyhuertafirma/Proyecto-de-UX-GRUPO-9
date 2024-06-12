@@ -1,6 +1,6 @@
 package com.smtaste.restaurant.dto;
 
-public record ProductoCarrito(
+public record ProductoCarritoDto(
         Integer id,
         String nombre,
         String urlImagen,

@@ -15,5 +15,8 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
             "FROM Producto p JOIN p.restaurante r " +
             "WHERE p.id IN :ids")
     List<Object[]> findAllProductoCarrito(@Param("ids") List<Long> ids);
+
+    @Query("SELECT p.id, p.nombre, p.url_foto, p.descripcion, p.cantidad FROM Producto p")
+    List<Object[]> findAllProductosMenu();
 }
 
