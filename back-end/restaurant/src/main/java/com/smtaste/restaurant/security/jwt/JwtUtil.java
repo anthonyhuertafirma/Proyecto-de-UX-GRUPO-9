@@ -1,5 +1,5 @@
 package com.smtaste.restaurant.security.jwt;
-
+/*
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -36,3 +36,4 @@ public class JwtUtil {
         return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
 }
+*/
