@@ -1,6 +1,7 @@
 package com.smtaste.restaurant.service;
 
-import com.smtaste.restaurant.dto.ProductoCarrito;
+import com.smtaste.restaurant.dto.ProductoCarritoDto;
+import com.smtaste.restaurant.dto.ProductoMenuResponse;
 import com.smtaste.restaurant.repository.ProductoRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ public class ProductoService {
         this.productoRepository = productoRepository;
     }
 
-    public List<ProductoCarrito> findAll(List<String> productosId) {
+    public List<ProductoCarritoDto> findAll(List<String> productosId) {
         List<Long> productosIdLong = productosId.stream()
                                                     .map(Long::parseLong)
                                                     .toList();
@@ -23,7 +24,7 @@ public class ProductoService {
             List<Object[]> productosCrudo = productoRepository.findAllProductoCarrito(productosIdLong);
 
             return productosCrudo.stream().map(
-                    producto -> new ProductoCarrito(
+                    producto -> new ProductoCarritoDto(
                     (Integer) producto[0],
                     (String) producto[1],
                     (String) producto[2],
@@ -33,5 +34,19 @@ public class ProductoService {
         } catch (IllegalStateException e) {
             return null;
         }
+    }
+
+    public List<ProductoMenuResponse> findAllProductosMenu() {
+        List<Object[]> productos = productoRepository.findAllProductosMenu();
+
+        return productos.stream().map(
+                producto -> new ProductoMenuResponse(
+                        (Integer) producto[0],
+                        (String) producto[1],
+                        (String) producto[2],
+                        (String) producto[3],
+                        (Integer) producto[4]
+                )
+        ).toList();
     }
 }

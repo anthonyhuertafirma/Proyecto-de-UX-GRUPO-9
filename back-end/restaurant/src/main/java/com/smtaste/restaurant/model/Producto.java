@@ -23,6 +23,7 @@ public class Producto {
     private String url_foto;
     private String descripcion;
     private String categoria;
+    private Float precio;
     private Integer cantidad;
     @OneToMany(mappedBy = "producto")
     @JsonIgnore
