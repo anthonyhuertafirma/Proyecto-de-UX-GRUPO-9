@@ -1,5 +1,6 @@
 package com.smtaste.restaurant.security.jwt;
 
+/*
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,3 +47,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     }
 }
+*/

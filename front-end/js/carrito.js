@@ -1,21 +1,40 @@
 const cartItems = [
   {
-    imgSrc: 'images/dish-1.png',
-    imgAlt: 'Plato 1',
-    h3: 'Plato 1',
-    p: "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.",
-    span: 'Tienda: Cafetería De La Facultad De Letras'
+    urlImagen: 'images/dish-1.png',
+    nombre: 'Plato 1',
+    descripcion: "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.",
+    nombreRestaurante: 'Tienda: Cafetería De La Facultad De Letras'
   },
   {
-    imgSrc: 'images/dish-2.png',
-    imgAlt: 'Plato 2',
-    h3: 'Plato 2',
-    p: 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.',
-    span: 'Tienda: Cafetería De La Clínica Universitaria'
+    urlImagen: 'images/dish-2.png',
+    nombre: 'Plato 2',
+    descripcion: 'Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.',
+    nombreRestaurante: 'Tienda: Cafetería De La Clínica Universitaria'
   }
 ];
 
 let carritoContainer = document.getElementById('cart-items');
+
+async function recuperarItems() {
+  let carritoItems = recuperarItemsCarrito();
+  console.log(carritoItems);
+  const response = await fetch('http://localhost:8080/api/carrito', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(carritoItems)
+  });
+
+  const responseData = await response.json();
+
+  responseData.forEach((item) => {
+    carritoContainer.appendChild(createCartItem(item))
+  })
+}
+
+recuperarItems().then(r => console.log(r));
+
 
 // Función para crear un ítem del carrito
 function createCartItem(itemData) {
@@ -23,20 +42,20 @@ function createCartItem(itemData) {
   cartItem.className = 'cart-item';
 
   let img = document.createElement('img');
-  img.src = itemData.imgSrc;
-  img.alt = itemData.imgAlt;
+  img.src = itemData.urlImagen;
+  img.alt = itemData.nombre;
 
   let itemInfo = document.createElement('div');
   itemInfo.className = 'item-info';
 
   let h3 = document.createElement('h3');
-  h3.textContent = itemData.h3;
+  h3.textContent = itemData.nombre;
 
   let p = document.createElement('p');
-  p.textContent = itemData.p;
+  p.textContent = itemData.descripcion;
 
   let span = document.createElement('span');
-  span.textContent = itemData.span;
+  span.textContent = itemData.nombreRestaurante;
 
   itemInfo.appendChild(h3);
   itemInfo.appendChild(p);
@@ -63,7 +82,3 @@ function createCartItem(itemData) {
   return cartItem;
 }
 
-// Añadir cada ítem del carrito al contenedor principal
-cartItems.forEach(item => {
-  carritoContainer.appendChild(createCartItem(item));
-});

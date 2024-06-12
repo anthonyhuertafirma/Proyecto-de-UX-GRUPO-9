@@ -29,5 +29,6 @@ public class Producto {
     private List<ProductoPedido> productos;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_restaurante")
+    @JsonIgnore
     private Restaurante restaurante;
 }
