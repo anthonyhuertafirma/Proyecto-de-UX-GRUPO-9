@@ -9,7 +9,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     console.log('Email:', email); // Verificar que los datos se capturan
     console.log('Contraseña:', contrasena);
 
-    const response = await fetch('http://localhost:8080/login', {
+    const response = await fetch('http://localhost:8080/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -20,12 +20,12 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     if (response.ok) {
         const result = await response.json();
         console.log('Login exitoso:', result.user); // Verificar la respuesta
-        alert('Login successful! Welcome, ' + result.user);
+        alert('Inicio exitoso! Bienvenido, ' + result.user);
         // Redirigir a otra página después del inicio de sesión exitoso
-        window.location.href = '../front-end/index.html';
+        window.location.href = '../front-end/panel_adm.html';
     } else {
         const errorText = await response.json();
-        console.log('Error:', errorText); // Verificar el error
+        console.log('Error:', errorText);
         document.getElementById('errorMessage').innerText = errorText.message || 'Error during login';
         document.getElementById('errorMessage').style.display = 'block';
     }
