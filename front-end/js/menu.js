@@ -21,8 +21,6 @@ async function getProductos() {
 
   const responseData = await response.json();
 
-  console.log(responseData)
-
   responseData.forEach((item) => {
     boxContainer.appendChild(createBoxItem(item))
   })
