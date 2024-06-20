@@ -29,4 +29,10 @@ public class ProductoController {
 
         return ResponseEntity.status(HttpStatus.OK).body(productos);
     }
+    
+     @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarProducto(@PathVariable Long id) {
+        productoService.eliminarProducto(id);
+        return ResponseEntity.noContent().build();
+    }
 }
