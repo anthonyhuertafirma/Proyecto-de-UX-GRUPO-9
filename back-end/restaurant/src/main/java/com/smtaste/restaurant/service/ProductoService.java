@@ -29,7 +29,8 @@ public class ProductoService {
                     (String) producto[1],
                     (String) producto[2],
                     (String) producto[3],
-                    (String) producto[4]
+                    (String) producto[4],
+                            (Float) producto[5]
             )).toList();
         } catch (IllegalStateException e) {
             return null;
@@ -45,7 +46,8 @@ public class ProductoService {
                         (String) producto[1],
                         (String) producto[2],
                         (String) producto[3],
-                        (Integer) producto[4]
+                        (Integer) producto[4],
+                        (Float) producto[5]
                 )
         ).toList();
     }

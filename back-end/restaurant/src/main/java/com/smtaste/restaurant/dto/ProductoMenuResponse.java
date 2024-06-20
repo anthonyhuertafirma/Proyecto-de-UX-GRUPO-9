@@ -5,6 +5,7 @@ public record ProductoMenuResponse (
         String nombre,
         String urlImagen,
         String descripcion,
-        Integer cantidad
+        Integer cantidad,
+        Float precio
 ) {
 }

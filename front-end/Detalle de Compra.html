@@ -49,15 +49,40 @@
             </div>
             <div class="detalle-resumen">
                 <h2>Resumen</h2>
-                <p><span>Costo de los productos:</span> <span>S/. 00.00</span></p>
-                <p><span>Costo de Envío:</span> <span>S/. 00.00</span></p>
-                <p><strong>TOTAL:</strong> <strong>S/. 00.00</strong></p>
+                <p><span>Costo de los productos:</span> <span id="product-cost">S/. 00.00</span></p>
+                <p><span>Costo de Envío:</span> <span id="shipping-cost">S/. 5.00</span></p>
+                <p><strong>TOTAL:</strong> <strong id="total-cost">S/. 00.00</strong></p>
                 <button>Realizar Pedido</button>
             </div>
         </div>
     </main>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            actualizarResumen();
+            initMap();
+        });
+
+        function actualizarResumen() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            let productCostElement = document.getElementById('product-cost');
+            let shippingCostElement = document.getElementById('shipping-cost');
+            let totalCostElement = document.getElementById('total-cost');
+            let costoProductos = carrito.reduce((total, item) => {
+                const precio = parseFloat(item.precio);
+                const cantidad = parseFloat(carrito.length);
+                if (!isNaN(precio) && !isNaN(cantidad)) {
+                    return total + (precio * cantidad);
+                } else {
+                    return total;
+                }
+            }, 0);
+            let costoEnvio = parseFloat(shippingCostElement.textContent.replace('S/.', ''));
+
+            productCostElement.textContent = `S/. ${costoProductos.toFixed(2)}`;
+            totalCostElement.textContent = `S/. ${(costoProductos + costoEnvio).toFixed(2)}`;
+        }
+
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
@@ -65,6 +90,7 @@
             });
         }
     </script>
+    <!-- Api de google maps YOUR_API_KEY = AIzaSyCEx-gveUvaXGzG1nIEWsZlvKTyhWpKgw8 -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
     <script src="js/script.js"></script>
 </body>

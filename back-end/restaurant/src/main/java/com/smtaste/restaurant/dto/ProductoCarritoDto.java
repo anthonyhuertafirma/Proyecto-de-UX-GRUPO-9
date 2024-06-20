@@ -5,6 +5,7 @@ public record ProductoCarritoDto(
         String nombre,
         String urlImagen,
         String descripcion,
-        String nombreRestaurante
+        String nombreRestaurante,
+        Float precio
 ) {
 }

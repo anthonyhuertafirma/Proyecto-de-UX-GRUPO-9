@@ -11,12 +11,12 @@ import java.util.List;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-    @Query("SELECT p.id, p.nombre, p.url_foto , p.descripcion, r.nombre " +
+    @Query("SELECT p.id, p.nombre, p.url_foto , p.descripcion, r.nombre, p.precio " +
             "FROM Producto p JOIN p.restaurante r " +
             "WHERE p.id IN :ids")
     List<Object[]> findAllProductoCarrito(@Param("ids") List<Long> ids);
 
-    @Query("SELECT p.id, p.nombre, p.url_foto, p.descripcion, p.cantidad FROM Producto p")
+    @Query("SELECT p.id, p.nombre, p.url_foto, p.descripcion, p.cantidad, p.precio FROM Producto p")
     List<Object[]> findAllProductosMenu();
 }
 
