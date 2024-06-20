@@ -69,7 +69,7 @@ function createBoxItem(menuItem) {
 
   const span = document.createElement('span');
   span.className = 'price';
-  span.textContent = menuItem.precio;
+  span.textContent = `S/. ${menuItem.precio ? menuItem.precio : 'No disponible'}`;
 
   contentDiv.appendChild(span);
   box.appendChild(imageDiv);

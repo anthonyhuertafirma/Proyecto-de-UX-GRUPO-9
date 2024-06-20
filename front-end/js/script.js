@@ -64,7 +64,7 @@ let swiper = new Swiper(".review-slider", {
   loop:true,
   breakpoints: {
     0: {
-        slidesPerView: 1,
+      slidesPerView: 1,
     },
     640: {
       slidesPerView: 2,
