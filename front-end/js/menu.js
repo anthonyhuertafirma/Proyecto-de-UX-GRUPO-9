@@ -62,17 +62,40 @@ function createBoxItem(menuItem) {
 
   const i = document.createElement('i');
   i.className = 'fa-solid fa-cart-shopping';
-
   botonCarrito.appendChild(i);
-  contentDiv.appendChild(botonCarrito);
+  botonCarrito.textContent = ' Agregar al carrito';
+
+  const botonEliminar = document.createElement('button');
+  botonEliminar.href = '#';
+  botonEliminar.className = 'btn eliminar';
+  botonEliminar.addEventListener('click', () => {eliminarItemCarrito(menuItem.id)});
+  botonEliminar.textContent = 'Eliminar';
 
   const span = document.createElement('span');
   span.className = 'price';
   span.textContent = `S/. ${menuItem.precio ? menuItem.precio : 'No disponible'}`;
 
+  contentDiv.appendChild(botonCarrito);
+  contentDiv.appendChild(botonEliminar);
   contentDiv.appendChild(span);
   box.appendChild(imageDiv);
   box.appendChild(contentDiv);
 
   return box
+}
+
+async function eliminarItemCarrito(id) {
+  const response = await fetch(`http://localhost:8080/api/productos/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    alert('Producto eliminado del carrito');
+    document.getElementById(id).remove(); // Eliminar el producto del DOM
+  } else {
+    alert('Hubo un error al eliminar el producto del carrito');
+  }
 }
