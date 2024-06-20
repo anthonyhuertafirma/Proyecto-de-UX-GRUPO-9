@@ -7,7 +7,6 @@ const menuItems = {
   precio: 'S/12.99'
 }
 
-
 const boxContainer = document.getElementById('box-container');
 let arr = []
 
