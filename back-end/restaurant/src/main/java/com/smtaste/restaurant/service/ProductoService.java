@@ -51,4 +51,8 @@ public class ProductoService {
                 )
         ).toList();
     }
+    
+    public void eliminarProducto(Long id) {
+        productoRepository.deleteById(id);
+    }
 }
