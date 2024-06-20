@@ -19,4 +19,3 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Query("SELECT p.id, p.nombre, p.url_foto, p.descripcion, p.cantidad, p.precio FROM Producto p")
     List<Object[]> findAllProductosMenu();
 }
-
