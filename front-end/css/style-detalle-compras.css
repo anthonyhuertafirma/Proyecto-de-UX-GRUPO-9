@@ -35,30 +35,26 @@ header {
 }
 
 .detalle-compras-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-        "entrega pago"
-        "resumen resumen";
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para centralizar */
+    align-items: center; /* Centraliza horizontalmente */
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
-    margin: 60px auto;  /* Ajuste del margen superior para bajar el contenedor */
+    margin: 60px auto; /* Ajuste del margen superior para bajar el contenedor */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
 .detalle-entrega {
-    grid-area: entrega;
-}
-
-.detalle-pago {
-    grid-area: pago;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 600px; /* Ancho máximo */
 }
 
 .detalle-resumen {
-    grid-area: resumen;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 600px; /* Ancho máximo */
 }
 
 #map {
@@ -80,16 +76,6 @@ textarea {
 h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
-}
-
-.detalle-pago form {
-    display: flex;
-    flex-direction: column;
-}
-
-.detalle-pago label {
-    margin-bottom: 10px;
-    font-size: 1em;
 }
 
 .detalle-resumen p {
