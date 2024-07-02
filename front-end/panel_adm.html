@@ -35,31 +35,31 @@
         <div class="form-container">
             <div class="form-box">
                 <h3>Modificar Plato</h3>
-                <select>
-                    <option>Plato 1</option>
-                    <option>Plato 2</option>
-                    <option>Plato 3</option>
+                <select id="select-plato">
+                    <!-- Options will be dynamically populated -->
                 </select>
-                <img src="images/dish-1.png" alt="Plato 1">
-                <input type="text" placeholder="Nombre del Plato" value="Plato 1">
-                <input type="number" placeholder="Precio: S/.00">
-                <input type="number" placeholder="Cantidad: 00">
-                <textarea placeholder="Descripción: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum odio at augue tempor..."></textarea>
-                <button>Actualizar</button>
-                <button style="background-color: #dc3545;">Eliminar</button>
+                <img id="img-plato" src="" alt="Imagen del Plato">
+                <input type="file" id="imagen-plato-file">
+                <input type="text" id="nombre-plato" placeholder="Nombre del Plato">
+                <input type="number" id="precio-plato" placeholder="Precio: S/.00">
+                <input type="number" id="cantidad-plato" placeholder="Cantidad: 00">
+                <textarea id="descripcion-plato" placeholder="Descripción: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum odio at augue tempor..."></textarea>
+                <button id="actualizar-plato">Actualizar</button>
+                <button id="eliminar-plato" style="background-color: #dc3545;">Eliminar</button>
             </div>
             <div class="form-box">
                 <h3>Añadir Plato Nuevo</h3>
-                <img src="images/dish-2.png" alt="Plato Nuevo">
-                <input type="text" placeholder="Nombre del Plato">
-                <input type="number" placeholder="Precio: S/.00">
-                <input type="number" placeholder="Cantidad: 00">
-                <textarea placeholder="Agrega una Descripción:"></textarea>
-                <button>Añadir</button>
-                <button style="background-color: #dc3545;">Limpiar</button>
+                <img id="img-nuevo" src="images/dish-2.png" alt="Plato Nuevo">
+                <input type="file" id="imagen-nuevo-file">
+                <input type="text" id="nombre-nuevo" placeholder="Nombre del Plato">
+                <input type="number" id="precio-nuevo" placeholder="Precio: S/.00">
+                <input type="number" id="cantidad-nuevo" placeholder="Cantidad: 00">
+                <textarea id="descripcion-nuevo" placeholder="Agrega una Descripción:"></textarea>
+                <button id="añadir-plato">Añadir</button>
+                <button id="limpiar-formulario" style="background-color: #dc3545;">Limpiar</button>
             </div>
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/panel.js"></script>
 </body>
 </html>
