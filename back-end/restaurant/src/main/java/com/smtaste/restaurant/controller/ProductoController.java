@@ -30,5 +30,5 @@ public class ProductoController {
         return ResponseEntity.status(HttpStatus.OK).body(productos);
     }
     
-     
+
 }
