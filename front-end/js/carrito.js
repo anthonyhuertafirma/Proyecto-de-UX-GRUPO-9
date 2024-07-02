@@ -1,10 +1,4 @@
-const cartItems = {
-    urlImagen: 'images/dish-1.png',
-    nombre: 'Plato 1',
-    descripcion: "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.",
-    nombreRestaurante: 'Tienda: Cafetería De La Facultad De Letras',
-    precio: 'S/12.99'
-}
+const cartItems = {};
 
 let carritoContainer = document.getElementById('cart-items');
 
@@ -53,12 +47,15 @@ function createCartItem(itemData) {
     let p = document.createElement('p');
     p.textContent = itemData.descripcion;
 
-    let span = document.createElement('span');
-    span.textContent = itemData.nombreRestaurante;
+    let spanPrecio = document.createElement('span');
+    spanPrecio.textContent = `S/. ${itemData.precio}`;
+    spanPrecio.style.color = 'green';
+    spanPrecio.style.fontWeight = 'bold';
+    spanPrecio.style.fontSize = '1.2em'; // Tamaño más grande que el texto normal
 
     itemInfo.appendChild(h3);
     itemInfo.appendChild(p);
-    itemInfo.appendChild(span);
+    itemInfo.appendChild(spanPrecio);
 
     let itemControls = document.createElement('div');
     itemControls.className = 'item-controls';
@@ -66,16 +63,16 @@ function createCartItem(itemData) {
     let input = document.createElement('input');
     input.type = 'number';
     input.value = '1';
-    input.min = '1';
+    input.min = '0'; // Permitir cantidad mínima de 0
     input.addEventListener('change', (event) => {
         actualizarResumenConCantidad(itemData, event.target.value);
+        if (event.target.value <= 0) {
+            eliminarElementoDelCarrito(cartItem, itemData);
+        }
     });
 
-    let button = document.createElement('button');
-    button.className = 'fas fa-trash-alt';
 
     itemControls.appendChild(input);
-    itemControls.appendChild(button);
 
     cartItem.appendChild(img);
     cartItem.appendChild(itemInfo);
@@ -118,4 +115,20 @@ function actualizarResumenConCantidad(itemData, cantidad) {
         };
     });
     localStorage.setItem('carrito', JSON.stringify(updatedCarrito));
+}
+
+function eliminarElementoDelCarrito(cartItem, itemData) {
+    // Eliminar elemento del DOM
+    carritoContainer.removeChild(cartItem);
+
+    // Actualizar almacenamiento local eliminando el elemento
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito = carrito.filter(item => item.id !== itemData.id);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Actualizar resumen
+    let totalPrecio = parseFloat(document.getElementById('product-cost').textContent.replace('S/.', ''));
+    const itemPrice = parseFloat(itemData.precio.replace('S/', ''));
+    totalPrecio -= itemPrice;
+    actualizarResumen(totalPrecio);
 }
