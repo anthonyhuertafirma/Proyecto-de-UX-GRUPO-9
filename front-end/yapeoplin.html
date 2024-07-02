@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM TASTE</title>
+    <link rel="shortcut icon" href="images/Restaurant On Site.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <style>
+        .btn-group button {
+            padding: 15px 30px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        .btn-group button:hover {
+            background-color: #555;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-content img {
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header section starts -->
+<header>
+    <a href="index.html" class="logo"><img src="images/Restaurant On Site 05.png" alt="SM TASTE Logo">SM TASTE</a>
+
+    <nav class="navbar">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#about">Nosotros</a>
+        <a href="index.html#menu">Menú</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-search" id="search-icon"></i>
+        <a href="Carro de Compras.html" class="fas fa-shopping-cart"></a>
+        <a href="login.html" class="fas fa-user"></a>
+    </div>
+</header>
+
+<!-- Search form -->
+<form action="" id="search-form">
+    <input type="search" placeholder="Buscar en SM TASTE" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
+
+<!-- Confirmation section -->
+<section class="confirmation" id="confirmation">
+    <div class="container-card">
+        <h1 class="heading">Pago con Yape o Plin</h1>
+        <div class="btn-group">
+            <button id="btn-yape">Yape</button>
+            <button id="btn-plin">Plin</button>
+        </div>
+        <div class="content">
+            <p>Número a yapear: 966999999</p>
+            <a href="https://wa.me/51966999999?text=Envío%20mi%20voucher%20de%20pago%20por%20Yape/Plin" class="btn" target="_blank">Enviar voucher</a>
+        </div>
+    </div>
+</section>
+
+<!-- The Modal -->
+<div id="modalYape" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="images/qr_code.png" alt="Código QR Yape">
+    </div>
+</div>
+
+<div id="modalPlin" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="images/qr_code.png" alt="Código QR Plin">
+    </div>
+</div>
+
+<!-- Footer section -->
+<section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h3>Nosotros</h3>
+            <a href="Acerca de Nosotros.html"><b>Nosotros</b></a>
+            <a href="Acerca de Nosotros.html">¿Quiénes somos?</a>
+            <a href="Acerca de Nosotros.html">Misión y Visión</a>
+            <a href="#">Contáctanos</a>
+        </div>
+        <div class="box">
+            <h3>Síguenos</h3>
+            <a href="#"><b>Términos y condiciones</b></a>
+            <a href="#"><b>Avisos Legales</b></a>
+            <a href="#"><b>Política de Privacidad</b></a>
+        </div>
+    </div>
+</section>
+
+<!-- External JS files -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Custom JS file -->
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modalYape = document.getElementById("modalYape");
+        var modalPlin = document.getElementById("modalPlin");
+
+        var btnYape = document.getElementById("btn-yape");
+        var btnPlin = document.getElementById("btn-plin");
+
+        var spanCloseYape = modalYape.getElementsByClassName("close")[0];
+        var spanClosePlin = modalPlin.getElementsByClassName("close")[0];
+
+        btnYape.onclick = function() {
+            modalYape.style.display = "flex";
+        }
+
+        btnPlin.onclick = function() {
+            modalPlin.style.display = "flex";
+        }
+
+        spanCloseYape.onclick = function() {
+            modalYape.style.display = "none";
+        }
+
+        spanClosePlin.onclick = function() {
+            modalPlin.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modalYape) {
+                modalYape.style.display = "none";
+            }
+            if (event.target == modalPlin) {
+                modalPlin.style.display = "none";
+            }
+        }
+    });
+</script>
+</body>
+</html>

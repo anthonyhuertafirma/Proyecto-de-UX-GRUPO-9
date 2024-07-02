@@ -44,7 +44,7 @@
                 <p><span>Costo de los productos:</span> <span id="product-cost">S/. 00.00</span></p>
                 <p><span>Costo de Envío:</span> <span id="shipping-cost">S/. 5.00</span></p>
                 <p><strong>TOTAL:</strong> <strong id="total-cost">S/. 00.00</strong></p>
-                <button>Realizar Pedido</button>
+                <button id="realizar-pedido-btn">Realizar Pedido</button>
             </div>
         </div>
     </main>
@@ -53,6 +53,18 @@
         document.addEventListener('DOMContentLoaded', function() {
             actualizarResumen();
             initMap();
+
+            document.getElementById('realizar-pedido-btn').addEventListener('click', function(event) {
+                event.preventDefault();
+                let metodoPago = document.querySelector('input[name="metodo_pago"]:checked').value;
+                if (metodoPago === 'contra_entrega') {
+                    window.location.href = 'compra_realizada.html';
+                } else if (metodoPago === 'yape' ) {
+                    window.location.href = `yapeoplin.html`;
+                } else {
+                    alert("Metodo invalido");
+                }
+            });
         });
 
         function actualizarResumen() {
@@ -83,7 +95,7 @@
         }
     </script>
     <!-- Api de google maps YOUR_API_KEY = AIzaSyCEx-gveUvaXGzG1nIEWsZlvKTyhWpKgw8 -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEx-gveUvaXGzG1nIEWsZlvKTyhWpKgw8&callback=initMap"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
