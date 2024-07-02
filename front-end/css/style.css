@@ -675,7 +675,7 @@ header .icons #menu-bars{
 
 .dark {
     background-color: #3a3a3a;
-    padding: 50px 0px;
+    padding: 50px 0;
 }
 
 .boton{
@@ -712,7 +712,7 @@ header .icons #menu-bars{
 	border-radius: 6px;
 	overflow: hidden;
 	background:#fff;
-	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 10px rgba(0,0,0,0.2);
 	transition: all 400ms ease-out;
 	cursor: default;
 }
@@ -816,8 +816,8 @@ header .icons #menu-bars{
 
 .columna1 {
     position:absolute;
-    top:0px;
-    left:0px;
+    top:0;
+    left:0;
     width:200px;
     margin-top:10px;
 }
