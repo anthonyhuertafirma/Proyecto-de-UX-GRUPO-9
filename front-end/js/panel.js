@@ -68,18 +68,28 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         if (confirm('¿Estás seguro de que deseas actualizar este producto?')) {
             const selectedId = selectPlato.value;
-            const formData = new FormData();
-            formData.append('nombre', nombrePlato.value);
-            formData.append('precio', precioPlato.value);
-            formData.append('cantidad', cantidadPlato.value);
-            formData.append('descripcion', descripcionPlato.value);
-            if (imagenPlatoFile.files[0]) {
-                formData.append('url_foto', imagenPlatoFile.files[0]);
+
+            const formData = {
+                'id': selectPlato.value,
+                'nombre': nombrePlato.value,
+                'precio': precioPlato.value,
+                'cantidad': cantidadPlato.value,
+                'descripcion': descripcionPlato.value,
+                'urlImagen': productos[selectedId - 1].urlImagen,
             }
+
+            if (imagenPlatoFile.files[0]) {
+                formData['urlImagen'] = imagenPlatoFile.files[0];
+            }
+
+            console.log(formData);
 
             const response = await fetch(`http://localhost:8080/api/productos/${selectedId}`, {
                 method: 'PUT',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
             if (response.ok) {
                 alert('Producto actualizado correctamente');
