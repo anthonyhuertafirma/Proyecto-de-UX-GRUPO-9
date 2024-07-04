@@ -4,12 +4,14 @@ import com.smtaste.restaurant.dto.ProductoCarritoDto;
 import com.smtaste.restaurant.dto.ProductoMenuResponse;
 import com.smtaste.restaurant.model.Producto;
 import com.smtaste.restaurant.repository.ProductoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class ProductoService {
     private final ProductoRepository productoRepository;
 
@@ -50,19 +52,27 @@ public class ProductoService {
         ).toList();
     }
 
-    public Producto saveProducto(Producto producto) {
-        return productoRepository.save(producto);
+    public Producto saveProducto(ProductoMenuResponse producto) {
+        Producto newProducto = new Producto();
+        newProducto.setNombre(producto.nombre());
+        newProducto.setDescripcion(producto.descripcion());
+        newProducto.setPrecio(producto.precio());
+        newProducto.setCantidad(producto.cantidad());
+        newProducto.setUrl_foto(producto.urlImagen());
+
+        return productoRepository.save(newProducto);
     }
 
-    public Producto updateProducto(Long id, Producto productoDetails) {
+    public Producto updateProducto(Long id, ProductoMenuResponse productoDetails) {
         Optional<Producto> optionalProducto = productoRepository.findById(id);
         if (optionalProducto.isPresent()) {
+            log.info("Se encontro el producto, actualizandolo");
             Producto producto = optionalProducto.get();
-            producto.setNombre(productoDetails.getNombre());
-            producto.setDescripcion(productoDetails.getDescripcion());
-            producto.setCantidad(productoDetails.getCantidad());
-            producto.setPrecio(productoDetails.getPrecio());
-            producto.setUrl_foto(productoDetails.getUrl_foto());
+            producto.setNombre(productoDetails.nombre());
+            producto.setDescripcion(productoDetails.descripcion());
+            producto.setCantidad(productoDetails.cantidad());
+            producto.setPrecio(productoDetails.precio());
+            producto.setUrl_foto(productoDetails.urlImagen());
             return productoRepository.save(producto);
         }
         throw new RuntimeException("Producto no encontrado");

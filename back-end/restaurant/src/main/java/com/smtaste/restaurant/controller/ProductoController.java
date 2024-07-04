@@ -28,13 +28,14 @@ public class ProductoController {
     }
 
     @PostMapping
-    public ResponseEntity<Producto> addProducto(@RequestBody Producto producto) {
+    public ResponseEntity<Producto> addProducto(@RequestBody ProductoMenuResponse producto) {
         Producto newProducto = productoService.saveProducto(producto);
         return ResponseEntity.status(HttpStatus.CREATED).body(newProducto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Producto> updateProducto(@PathVariable Long id, @RequestBody Producto productoDetails) {
+    public ResponseEntity<Producto> updateProducto(@PathVariable Long id, @RequestBody ProductoMenuResponse productoDetails) {
+        log.info("Actualizar producto con nombre: {}", productoDetails.nombre());
         Producto updatedProducto = productoService.updateProducto(id, productoDetails);
         return ResponseEntity.status(HttpStatus.OK).body(updatedProducto);
     }
