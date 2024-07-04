@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const descripcionPlato = document.getElementById('descripcion-plato');
     const actualizarPlatoBtn = document.getElementById('actualizar-plato');
     const eliminarPlatoBtn = document.getElementById('eliminar-plato');
-    const añadirPlatoBtn = document.getElementById('añadir-plato');
+    const anadirPlatoBtn = document.getElementById('añadir-plato');
     const limpiarFormularioBtn = document.getElementById('limpiar-formulario');
 
     const imgNuevo = document.getElementById('img-nuevo');
@@ -82,8 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData['urlImagen'] = imagenPlatoFile.files[0];
             }
 
-            console.log(formData);
-
             const response = await fetch(`http://localhost:8080/api/productos/${selectedId}`, {
                 method: 'PUT',
                 headers: {
@@ -116,29 +114,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    añadirPlatoBtn.addEventListener('click', async (event) => {
+    anadirPlatoBtn.addEventListener('click', async (event) => {
         event.preventDefault();
         if (confirm('¿Estás seguro de que deseas añadir este producto?')) {
-            const formData = {
-                'nombre': nombrePlato.value,
-                'precio': precioPlato.value,
-                'cantidad': cantidadPlato.value,
-                'descripcion': descripcionPlato.value,
+            const nuevoProducto = {
+                'nombre': nombreNuevo.value,
+                'precio': precioNuevo.value,
+                'cantidad': cantidadNuevo.value,
+                'descripcion': descripcionNuevo.value,
                 'urlImagen': ''
             }
 
             if (imagenNuevoFile.files[0]) {
-                formData['urlImagen'] = imagenNuevoFile.files[0];
+                const fileData = new FormData();
+                fileData.append('file', imagenNuevoFile.files[0]);
+
+                console.log("Subiendo archivo")
+
+                const uploadResponse = await fetch('http://localhost:8080/api/upload', {
+                    method: 'POST',
+                    body: fileData
+                });
+
+                if (uploadResponse.ok) {
+                    nuevoProducto['urlImagen'] = await uploadResponse.text();
+                } else {
+                    alert('Error al subir la imagen');
+                    return;
+                }
             }
 
-            console.log(formData);
+            console.log(nuevoProducto);
 
             const response = await fetch('http://localhost:8080/api/productos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(nuevoProducto)
             });
 
             if (response.ok) {
@@ -161,5 +174,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    fetchProductos();
+    fetchProductos().then(r => {});
 });
