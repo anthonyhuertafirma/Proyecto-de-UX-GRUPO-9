@@ -64,13 +64,14 @@
             document.getElementById('realizar-pedido-btn').addEventListener('click', function(event) {
                 event.preventDefault();
                 let metodoPago = document.querySelector('input[name="metodo_pago"]:checked').value;
-                if (metodoPago === 'contra_entrega') {
+                if (metodoPago == 'contra_entrega') {
                     window.location.href = 'compra_realizada.html';
-                } else if (metodoPago === 'yape' ) {
+                } else if (metodoPago == 'yape' ) {
                     window.location.href = `yapeoplin.html`;
                 } else {
                     alert("Metodo invalido");
                 }
+                localStorage.clear();
             });
         });
 
@@ -81,7 +82,7 @@
             let totalCostElement = document.getElementById('total-cost');
             let costoProductos = carrito.reduce((total, item) => {
                 const precio = parseFloat(item.precio);
-                const cantidad = parseFloat(carrito.length);
+                const cantidad = parseFloat(localStorage.length);
                 if (!isNaN(precio) && !isNaN(cantidad)) {
                     return total + (precio * cantidad);
                 } else {
