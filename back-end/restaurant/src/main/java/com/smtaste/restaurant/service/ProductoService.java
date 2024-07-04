@@ -52,8 +52,15 @@ public class ProductoService {
         ).toList();
     }
 
-    public Producto saveProducto(Producto producto) {
-        return productoRepository.save(producto);
+    public Producto saveProducto(ProductoMenuResponse producto) {
+        Producto newProducto = new Producto();
+        newProducto.setNombre(producto.nombre());
+        newProducto.setDescripcion(producto.descripcion());
+        newProducto.setPrecio(producto.precio());
+        newProducto.setCantidad(producto.cantidad());
+        newProducto.setUrl_foto(producto.urlImagen());
+
+        return productoRepository.save(newProducto);
     }
 
     public Producto updateProducto(Long id, ProductoMenuResponse productoDetails) {
