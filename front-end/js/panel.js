@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'precio': precioPlato.value,
                 'cantidad': cantidadPlato.value,
                 'descripcion': descripcionPlato.value,
-                'urlImagen': productos[selectedId - 1].urlImagen,
+                'urlImagen': imgPlato.src,
             }
 
             if (imagenPlatoFile.files[0]) {
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
             const selectedId = selectPlato.value;
             const response = await fetch(`http://localhost:8080/api/productos/${selectedId}`, {
-                method: 'DELETE'
+                method: 'DELETE',
             });
             if (response.ok) {
                 alert('Producto eliminado correctamente');
@@ -119,19 +119,28 @@ document.addEventListener('DOMContentLoaded', () => {
     añadirPlatoBtn.addEventListener('click', async (event) => {
         event.preventDefault();
         if (confirm('¿Estás seguro de que deseas añadir este producto?')) {
-            const formData = new FormData();
-            formData.append('nombre', nombreNuevo.value);
-            formData.append('precio', precioNuevo.value);
-            formData.append('cantidad', cantidadNuevo.value);
-            formData.append('descripcion', descripcionNuevo.value);
-            if (imagenNuevoFile.files[0]) {
-                formData.append('url_foto', imagenNuevoFile.files[0]);
+            const formData = {
+                'nombre': nombrePlato.value,
+                'precio': precioPlato.value,
+                'cantidad': cantidadPlato.value,
+                'descripcion': descripcionPlato.value,
+                'urlImagen': ''
             }
+
+            if (imagenNuevoFile.files[0]) {
+                formData['urlImagen'] = imagenNuevoFile.files[0];
+            }
+
+            console.log(formData);
 
             const response = await fetch('http://localhost:8080/api/productos', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
+
             if (response.ok) {
                 alert('Producto añadido correctamente');
                 await fetchProductos();

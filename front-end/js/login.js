@@ -9,7 +9,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     console.log('Email:', email); // Verificar que los datos se capturan
     console.log('Contraseña:', contrasena);
 
-    const response = await fetch('http://localhost:8080/api/login', {
+    const response = await fetch('http://localhost:8080/api/usuarios/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
