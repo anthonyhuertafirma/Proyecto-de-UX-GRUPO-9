@@ -1,6 +1,5 @@
-## PROYECTO DE UX
-- Curso: Experiencia de Usuario y Usabilidad
-- Grupo: 9
-- Ciclo: 2024-1
+## PROYECTO DE VERIFICACION Y VALIDACION DE SOFTWARE
+- Grupo: 6
+- Ciclo: 2024-2
 
 
