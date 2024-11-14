@@ -34,7 +34,8 @@ public class ProductoService {
                             (Float) producto[5]
                     )).toList();
         } catch (IllegalStateException e) {
-            return null;
+            log.error("Error al obtener productos del carrito", e);
+            throw new RuntimeException("No se pudieron obtener los productos del carrito");
         }
     }
 
@@ -53,6 +54,10 @@ public class ProductoService {
     }
 
     public Producto saveProducto(ProductoMenuResponse producto) {
+        if (producto.nombre() == null || producto.precio() <= 0) {
+            throw new IllegalArgumentException("Nombre o precio del producto no válidos.");
+        }
+
         Producto newProducto = new Producto();
         newProducto.setNombre(producto.nombre());
         newProducto.setDescripcion(producto.descripcion());
@@ -79,6 +84,7 @@ public class ProductoService {
     }
 
     public void deleteProducto(Long id) {
+
         productoRepository.deleteById(id);
     }
 }
