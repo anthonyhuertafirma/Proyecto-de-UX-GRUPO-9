@@ -64,7 +64,7 @@ class ProductoControllerTest {
         Producto producto = new Producto();
         producto.setId(1);
         producto.setNombre("Pizza");
-
+    
         when(productoService.saveProducto(any(ProductoMenuResponse.class))).thenReturn(producto);
 
         mockMvc.perform(post("/api/productos")
@@ -73,9 +73,10 @@ class ProductoControllerTest {
                 .andExpect(status().isCreated())  // Expect 201 Created
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.nombre", is("Pizza")));
-
+    
         verify(productoService, times(1)).saveProducto(any(ProductoMenuResponse.class));
     }
+    
 
 
     @Test
@@ -83,12 +84,12 @@ class ProductoControllerTest {
         Producto producto = new Producto();
         producto.setId(1);
         producto.setNombre("Pizza Actualizada");
-
+    
         ProductoMenuResponse productoDetails = new ProductoMenuResponse(
                 1, "Pizza Actualizada", "http://example.com/pizza-updated.jpg",
                 "Pizza con ingredientes nuevos", 15, 14.99f
         );
-
+    
         when(productoService.updateProducto(anyLong(), any(ProductoMenuResponse.class))).thenReturn(producto);
 
         mockMvc.perform(put("/api/productos/1")  // Use PUT for update
@@ -97,9 +98,10 @@ class ProductoControllerTest {
                 .andExpect(status().isOk())  // Expect 200 OK for successful update
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.nombre", is("Pizza Actualizada")));
-
+    
         verify(productoService, times(1)).updateProducto(anyLong(), any(ProductoMenuResponse.class));
     }
+    
 
 
     @Test
